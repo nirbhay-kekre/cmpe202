@@ -1,43 +1,50 @@
+import java.util.HashSet;
+import java.util.Set;
 
-public class GumballMachine
+public class GumballMachine implements IGumballMachine
 {
 
     private int num_gumballs;
-    private boolean has_quarter;
+    private Set<Integer> denominationsAccepted = new HashSet<Integer>();
+    private int currentMoney;
+    private int cost;
 
-    public GumballMachine( int size )
+    public GumballMachine( int size, int cost, Set<Integer> denominationsAccepted )
     {
         // initialise instance variables
         this.num_gumballs = size;
-        this.has_quarter = false;
+        this.cost = cost;
+        this.currentMoney=0;
+        this.denominationsAccepted = denominationsAccepted;
     }
 
-    public void insertQuarter(int coin)
+    public void insertCoin(int coin)
     {
-        if ( coin == 25 )
-            this.has_quarter = true ;
-        else 
-            this.has_quarter = false ;
+        if ( denominationsAccepted.contains(coin)){
+            this.currentMoney += coin ;
+        }else{ 
+            System.out.println("Can not insert "+ coin) ;
+        }
     }
     
     public void turnCrank()
     {
-    	if ( this.has_quarter )
+    	if ( this.currentMoney >= this.cost)
     	{
     		if ( this.num_gumballs > 0 )
     		{
     			this.num_gumballs-- ;
-    			this.has_quarter = false ;
-    			System.out.println( "Thanks for your quarter.  Gumball Ejected!" ) ;
+    			this.currentMoney -= this.cost ;
+    			System.out.println( "Gumball Ejected!" ) ;
     		}
     		else
     		{
-    			System.out.println( "No More Gumballs!  Sorry, can't return your quarter." ) ;
+    			System.out.println( "No More Gumballs!  Sorry, can't return your coins" ) ;
     		}
     	}
     	else 
     	{
-    		System.out.println( "Please insert a quarter" ) ;
+    		System.out.println( "Please insert more amount" ) ;
     	}        
     }
 }
