@@ -1,33 +1,42 @@
-
+import java.util.Set;
 
 public class GumballMachine {
  
-	State soldOutState;
-	State noQuarterState;
-	State hasQuarterState;
-	State soldState;
+	private State soldOutState;
+	private State noCoinState;
+	private State completeMoneyState;
+	private State soldState;
+	private State partialMoneyState;
  
-	State state = soldOutState;
-	int count = 0;
+	private State state = soldOutState;
+	private int count = 0;
+	private int cost = 0;
+	private boolean isMoreThanOneCoinAllowed =false;
+	private int moneyInGBM=0;
+	private Set<Integer> denominationsAccepted;
  
-	public GumballMachine(int numberGumballs) {
+	public GumballMachine(int numberGumballs, int cost, Set<Integer> denominationsAccepted,
+			boolean isMoreThanOneCoinAllowed) {
 		soldOutState = new SoldOutState(this);
-		noQuarterState = new NoQuarterState(this);
-		hasQuarterState = new HasQuarterState(this);
+		noCoinState = new NoCoinState(this);
+		completeMoneyState = new CompleteMoneyState(this);
+		partialMoneyState = new PartialMoneyState(this);
 		soldState = new SoldState(this);
-
-		this.count = numberGumballs;
+		this.cost=cost;
+		this.isMoreThanOneCoinAllowed = isMoreThanOneCoinAllowed;
+		this.denominationsAccepted = denominationsAccepted;
+		this.count = numberGumballs;		
  		if (numberGumballs > 0) {
-			state = noQuarterState;
+			state = noCoinState;
 		} 
 	}
  
-	public void insertQuarter() {
-		state.insertQuarter();
+	public void insertCoin(int coin) {
+		state.insertCoin(coin);
 	}
  
 	public void ejectQuarter() {
-		state.ejectQuarter();
+		state.ejectCoins();
 	}
  
 	public void turnCrank() {
@@ -51,8 +60,12 @@ public class GumballMachine {
 	}
  
 	void refill(int count) {
+		if(count <=0) {
+			System.out.println("you have to refill atleast one gumball");
+			return;
+		}
 		this.count = count;
-		state = noQuarterState;
+		state.refill(count);
 	}
 
     public State getState() {
@@ -63,12 +76,12 @@ public class GumballMachine {
         return soldOutState;
     }
 
-    public State getNoQuarterState() {
-        return noQuarterState;
+    public State getNoCoinState() {
+        return noCoinState;
     }
 
-    public State getHasQuarterState() {
-        return hasQuarterState;
+    public State getCompleteMoneyState() {
+        return completeMoneyState;
     }
 
     public State getSoldState() {
@@ -87,4 +100,29 @@ public class GumballMachine {
 		result.append("Machine is " + state + "\n");
 		return result.toString();
 	}
+
+	public State getPartialMoneyState() {
+		return partialMoneyState;
+	}
+
+	public int getCost() {
+		return cost;
+	}
+
+	public boolean isMoreThanOneCoinAllowed() {
+		return isMoreThanOneCoinAllowed;
+	}
+
+	public int getMoneyInGBM() {
+		return moneyInGBM;
+	}
+
+	public Set<Integer> getDenominationsAccepted() {
+		return denominationsAccepted;
+	}
+
+	public void setMoneyInGBM(int moneyInGBM) {
+		this.moneyInGBM = moneyInGBM;
+	}
+	
 }
