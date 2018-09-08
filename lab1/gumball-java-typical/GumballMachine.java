@@ -18,6 +18,7 @@ public class GumballMachine implements IGumballMachine
         this.denominationsAccepted = denominationsAccepted;
     }
 
+    @Override
     public void insertCoin(int coin)
     {
         if ( denominationsAccepted.contains(coin)){
@@ -27,6 +28,7 @@ public class GumballMachine implements IGumballMachine
         }
     }
     
+    @Override
     public void turnCrank()
     {
     	if ( this.currentMoney >= this.cost)
@@ -46,5 +48,11 @@ public class GumballMachine implements IGumballMachine
     	{
     		System.out.println( "Please insert more amount" ) ;
     	}        
+    }
+    
+    @Override
+    public String toString(){
+        return "GumballMachine [num_gumballs=" + num_gumballs + ", denominationsAccepted=" + denominationsAccepted
+				+ ", currentMoney=" + currentMoney + ", cost=" + cost + "]";
     }
 }
