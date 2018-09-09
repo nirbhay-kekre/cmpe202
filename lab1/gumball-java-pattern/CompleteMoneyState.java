@@ -8,7 +8,7 @@ public class CompleteMoneyState implements State {
 	public void insertCoin(int coin) {
 		if(gumballMachine.isMoreThanOneCoinAllowed() && 
 				gumballMachine.getDenominationsAccepted().contains(coin)) {
-			System.out.println(coin + " Inserted.");
+			System.out.println("You inserted: "+coin);
 			gumballMachine.setMoneyInGBM(gumballMachine.getMoneyInGBM()+coin);
 		}
 		else{

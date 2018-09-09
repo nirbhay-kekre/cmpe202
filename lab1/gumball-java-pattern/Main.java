@@ -23,6 +23,7 @@ public class Main {
 		System.out.println(gumballMachine);
 		
 		machine2();
+		machine3();
 	}
 	
 	public static void machine2() {
@@ -60,5 +61,38 @@ public class Main {
 		System.out.println(gumballMachine);
 		System.out.println(" -----------------");
 		
+	}
+	
+	public static void machine3() {
+
+		Set<Integer> denominationsAccepted3 = new HashSet<Integer>();
+		denominationsAccepted3.add(25);
+		denominationsAccepted3.add(5);
+		denominationsAccepted3.add(10);
+		GumballMachine gumballMachine3 = new GumballMachine(1, 50, denominationsAccepted3, true);
+		System.out.println(gumballMachine3);
+		
+		gumballMachine3.insertCoin(10);
+		gumballMachine3.insertCoin(10);
+		gumballMachine3.insertCoin(5);
+		gumballMachine3.insertCoin(25);
+		gumballMachine3.turnCrank();
+		gumballMachine3.refill(1);
+		System.out.println(gumballMachine3);
+		
+		gumballMachine3.insertCoin(25);
+		gumballMachine3.insertCoin(25);
+		gumballMachine3.insertCoin(10);
+		gumballMachine3.turnCrank();
+		gumballMachine3.refill(1);
+		System.out.println(gumballMachine3);
+		
+		gumballMachine3.insertCoin(25);
+		gumballMachine3.insertCoin(25);
+		gumballMachine3.insertCoin(10);
+		gumballMachine3.turnCrank();
+		gumballMachine3.refill(1);
+		System.out.println(gumballMachine3);
+	
 	}
 }

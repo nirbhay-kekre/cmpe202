@@ -64,6 +64,7 @@ public class GumballMachine {
 			System.out.println("you have to refill atleast one gumball");
 			return;
 		}
+		System.out.println("Refilling the Mahicne with "+count+" gumball");
 		this.count = count;
 		state.refill(count);
 	}
@@ -96,8 +97,10 @@ public class GumballMachine {
 		if (count != 1) {
 			result.append("s");
 		}
-		result.append("\n");
-		result.append("Machine is " + state + "\n");
+		result.append("\nDenominations accepts: "+denominationsAccepted);
+		result.append("\nUnutilized money: "+ moneyInGBM);
+		result.append("\nCost of gumball: "+ cost);
+		result.append("\nMachine is " + state + "\n");
 		return result.toString();
 	}
 

@@ -11,7 +11,7 @@ public class PartialMoneyState implements State {
 				gumballMachine.getDenominationsAccepted().contains(coin)) {
 			int moneyInGBM =gumballMachine.getMoneyInGBM()+coin;
 			gumballMachine.setMoneyInGBM(moneyInGBM);
-			System.out.println(coin + " Inserted.");
+			System.out.println("You inserted: " +coin);
 			if(moneyInGBM >= gumballMachine.getCost()) {
 				State nextState = gumballMachine.getCompleteMoneyState();
 				gumballMachine.setState(nextState);
