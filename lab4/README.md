@@ -21,10 +21,10 @@ allocateTable.                                              			|
 
 **Class name:** OpenForEnrollState
 
-Responsibility  	| Collaborators
+Responsibility      | Collaborators
 ------------------- | -------------
-* **add party:**  <br><em>if #seatsAvailable = party size</em>  allocate table right away.<br> <em>Otherwise</em>,  change state of the restaurant to  WaitListState and ask new state to addParty.| Restaurant
-* **getNotifiedWhenSeatsAvailable:** ok we're still open											| Party
+* **add party:**  <br><em>if #seatsAvailable = party size</em>  allocate table right away.<br> <em>Otherwise</em>,  change state of the restaurant to  WaitListState and ask new state to addParty. | Restaurant
+* **getNotifiedWhenSeatsAvailable:** ok we're still open | Party
 
 ---
 <br>
@@ -69,11 +69,12 @@ capacity of table  	|
 <br>
 
 **Class name:** Party
-Responsibility  										| Collaborators
+
+Responsibility  					| Collaborators
 ------------------------------------------------------- | -------------
-Name of members  										| Restaurant
-number of members  										|
-phone Number of primary member  						|
+Name of members  					| Restaurant
+number of members  					|
+phone Number of primary member  			|
 respond to table confirmation ('confirm' or 'leave') 	|
 
 ---
