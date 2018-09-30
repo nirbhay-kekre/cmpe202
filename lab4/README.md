@@ -84,7 +84,7 @@ respond to table confirmation ('confirm' or 'leave') 	|
 ## 2. Design Pattern ##
 
 ### 2.1 State ###
-Restaurant can either be in open for enrollment state where customers come and gets table allotted instantly or  in waiting list state where we have to manage queue to get the next customer for available table.
+Restaurant can either be in open for enrollment state where customers can come and get their table allotted instantly or in waiting list state where we have to manage queue to get the next customer for the available table.
 
 These two states are represented by **OpenForEnrollState** and **WaitListState** in above CRC cards.
 
@@ -93,9 +93,9 @@ The behavior of addParty and leaveParty will differ in both the states hence Sta
 
 ### 2.2 Chain of Responsibility ###
 
-WaitingListState will ask the Biggest party size handler to give it a customer/party to whom it can allocate a seat. The best part is waitingListState doesn't care which handler handled its request, this way we are able to decouple the party allocation waitingListState. 
+WaitingListState will ask the Biggest party size handler to give it a customer/party to whom it can allocate a seat. The best part is waitingListState doesn't care which handler handled its request, this way we are able to decouple the party allocation from waitingListState. 
 
 In above CRC Cards  **EnrollFromWaitListHandler**  describes the generic handler.
 
-while implementing we can create multiple handlers for different capacity of tables, each of which will take care of returning a appropriate party for its table size. This way its open for extension - since we are not hardcoding how to return a party for a table size. Hence, Chain of responsibility will be a good candidate to implement this. 
+while implementing we can create multiple handlers for different capacity of tables, each of which will take care of returning an appropriate party for its table size. This way its open for extension - since we are not hardcoding how to return a party for a table size. Hence, Chain of responsibility will be a good candidate to implement this. 
 
