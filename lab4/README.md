@@ -23,8 +23,8 @@ allocateTable.                                              			|
 
 Responsibility      | Collaborators
 ------------------- | -------------
-* **add party:**  <br><em>if #seatsAvailable = party size</em>  allocate table right away.<br> <em>Otherwise</em>,  change state of the restaurant to  WaitListState and ask new state to addParty. | Restaurant
-* **getNotifiedWhenSeatsAvailable:** ok we're still open | Party
+**add party:**  <br><em>if #seatsAvailable = party size</em>  allocate table right away.<br> <em>Otherwise</em>,  change state of the restaurant to  WaitListState and ask new state to addParty. | Restaurant
+**getNotifiedWhenSeatsAvailable:** ok we're still open | Party
 
 ---
 <br>
