@@ -22,6 +22,7 @@ public class CustomBurger extends Composite
         {
             obj.printDescription();
         }
+        System.out.println("\n");
     }
 }
 
