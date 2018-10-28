@@ -46,8 +46,20 @@ public class App {
     }
 
     public void key(String ch) {
-        count++;
-        screen.key(ch, count);
+    	if("Delete".equals(ch) || "X".equals(ch)) {
+			if(count>0) {
+				screen.key(ch, count);
+				count--;
+			}
+			
+		}else {
+			if(count<23) {
+				count++;
+				screen.key(ch, count);
+			}
+		}
+    	
+        
     }
 
 }

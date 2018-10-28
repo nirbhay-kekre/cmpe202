@@ -24,6 +24,7 @@ class Main
             System.out.println( app.display() ) ;
             System.out.print( "Key (Digit or X or Delete) => " ) ;
             String ch = c.readLine() ;
+            ch = ch.toUpperCase();
             app.key( ch ) ;
         }
     }
