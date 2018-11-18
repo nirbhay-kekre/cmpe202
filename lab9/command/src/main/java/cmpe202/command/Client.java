@@ -15,20 +15,8 @@ public class Client {
         MenuItem goodbye = new MenuItem() ;
         Command sayHello = new ConcreteCommand();
         Command sayGoodbye = new ConcreteCommand();
-        sayHello.setReceiver(
-                new Receiver() {
-                    public void doAction() {
-                        System.out.println( helloMessage );    
-                    }
-                }
-        );
-        sayGoodbye.setReceiver(
-                new Receiver() {
-                    public void doAction() {
-                        System.out.println( goodbyeMessage );
-                    }
-                }
-        );
+        sayHello.setReceiver( () -> System.out.println( helloMessage ) );
+        sayGoodbye.setReceiver( () -> System.out.println( goodbyeMessage ));
         hello.setCommand( sayHello );
         goodbye.setCommand( sayGoodbye );
         appMenu.addMenuItem(hello, "hello");
